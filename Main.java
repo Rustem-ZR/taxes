@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 
 public class Main {
@@ -50,26 +49,27 @@ public class Main {
         }
         System.out.println("Программа завершена!");
     }
-        private static void chooseTaxSystem(int earnings, int spendings) {
+
+    private static void chooseTaxSystem(int earnings, int spendings) {
         int simpleTax = taxEarningsSpendings(earnings);
         int complexTax = taxEarningsMinusSpendings(earnings, spendings);
 
-        int minTax = Math.min(simpleTax,complexTax);
-        int maxTax = Math.max(simpleTax,complexTax);
+        int minTax = Math.min(simpleTax, complexTax);
+        int maxTax = Math.max(simpleTax, complexTax);
         String taxSystem = simpleTax < complexTax ? "УСН доходы" : "УСН доходы минус расходы";
 
-        if (minTax == maxTax){
+        if (minTax == maxTax) {
             System.out.println("Можете выбрать любую систему налогообложения ");
             System.out.printf("Ваш налог составит: %d рублей\n", minTax);
-        }else{
+        } else {
             System.out.printf("Мы советуем вам %s\n", taxSystem);
             System.out.printf("Ваш налог составит: %d рублей\n", minTax);
             System.out.printf("Налог на другой системе: %d рублей\n", maxTax);
             System.out.printf("Экономия: %d рублей\n", maxTax - minTax);
         }
-        }
+    }
 
-        private static int taxEarningsSpendings(int earnings) {
+    private static int taxEarningsSpendings(int earnings) {
         int dohod = (earnings * 6 / 100);
         if (dohod >= 0) {
             return dohod;
@@ -77,7 +77,8 @@ public class Main {
             return 0;
         }
     }
-        private static int taxEarningsMinusSpendings(int earnings, int spendings) {
+
+    private static int taxEarningsMinusSpendings(int earnings, int spendings) {
         int tax = (earnings - spendings) * 15 / 100;
         if (tax >= 0) {
             return tax;
